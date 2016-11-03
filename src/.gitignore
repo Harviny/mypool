@@ -1,0 +1,10 @@
+/node_modules
+/public/*
+!/public/index.php
+Homestead.yaml
+Homestead.json
+.env
+/resources/views/*
+/resources/assets_map/*
+!/resources/assets_map/.gitkeep
+/beanstalkd/

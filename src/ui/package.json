@@ -1,0 +1,19 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "main": "fis-conf.js",
+  "scripts": {
+    "build": "npm run clean && fis3 release prod -d .. -c --verbose",
+    "dev": "npm run clean && fis3 release -d .. -c --verbose --watch",
+    "clean": "rm -rf npm_debug.log ../resources/views/* ../public/assets"
+  },
+  "devDependencies": {
+    "fis-parser-less": "^0.1.3",
+    "fis3": "^3.4.13",
+    "fis3-hook-commonjs": "git+https://github.com/btccom/fis3-hook-commonjs.git#4d4aa774673a567d94b6faa9d84450955537920c",
+    "fis3-parser-babel": "git+https://git@github.com/btccom/fis3-parser-babel.git",
+    "fis3-preprocessor-js-require-css": "^0.1.0",
+    "fis3-preprocessor-js-require-file": "^0.1.0",
+    "marked": "^0.3.6"
+  }
+}

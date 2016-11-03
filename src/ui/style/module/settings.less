@@ -1,0 +1,193 @@
+@import "../bootstrap/mixins.less";
+
+.settings{
+  .glyphicon{
+    color: #fff;
+    font-size:20px;
+  }
+}
+.popover {
+  max-width: inherit;
+  min-width: 280px;
+  border:0;
+  border-radius: 3px;
+  top:39px!important;
+  padding: inherit!important;
+  padding-bottom: 0px!important;
+  right:0;
+  left: inherit;
+  overflow: hidden;
+}
+.settings-board-container {
+  background: initial;
+  width: 280px;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 18px;
+
+}
+
+.settings-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  padding-bottom: 6px;
+  cursor: pointer;
+  position: relative;
+
+  .loading{
+    position: absolute;
+    top:0px;
+    width:100%;
+    left:0;
+    height: 55px;
+    line-height: 55px;
+    color:white;
+    background: url("/images/loading5.gif?__inline") 48% 50% no-repeat;
+    background-size: 32px auto;
+    font-size: 16px;
+    opacity: 0.5;
+  }
+  &:hover {
+    background: #efefef;
+  }
+
+  .h {
+    color: #999;
+  }
+  .b {
+    padding-top: 3px;
+    min-height: 18px;
+    .address{
+      height:18px;
+    }
+  }
+  .alert {
+    padding: 3px 5px;
+    font-size: 12px;
+    margin: 1px 0 0 0;
+    width:99%;
+  }
+
+  &.link {
+    padding: 0;
+
+    a {
+      display: block;
+      padding: 10px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+.action {
+  float: right;
+  font-size: 0;
+}
+
+.action {
+  a {
+    background: #18c;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    vertical-align: middle;
+
+    i {
+      font-size: 80%;
+    }
+
+  }
+}
+
+
+#setAddress,#setNMCAddress,#setSubsidyAddress{
+
+  .modal-dialog {
+    max-width: 350px;
+    line-height: 25px;
+
+    .modal-body {
+      padding:15px;
+
+      .error-line {
+        border: solid 1px #a94442;
+      }
+      .error-input {
+        display: block;
+        margin-top: 4px;
+        color: #a94442;
+        margin-bottom: -5px;
+      }
+      .k {
+        display: block;
+        color: #262626; line-height: 28px;
+      }
+      .v {
+        line-height: 28px;
+      }
+
+      .input-auth {
+        margin-top: 2px;
+        height: 35px;
+        line-height: 35px;
+      }
+      .flow1 {
+        .v {
+          line-height: 50px !important;
+        }
+      }
+
+      .flow2 {
+        line-height: 25px;
+
+        .input-auth {
+          margin-top: 4px;
+          height: 35px;
+          margin-left: -1px;
+          line-height: 35px;
+        }
+      }
+      .flow3 {
+        .ns {
+          margin-top: 3px;
+          line-height: 18px;
+          margin-bottom: 7px;
+        }
+        .checkbox-inline {
+          margin-left: 0;
+          padding-left: 0;
+          & > input[type='radio'] {
+            margin-right: 8px;
+          }
+          & > a {
+            padding-left: 5px;
+          }
+        }
+      }
+      .flow4 {
+        .input-auth {
+          margin-left: -1px;
+          width: 45%;
+          margin-top: 5px;
+          height: 35px;
+          line-height: 35px;
+        }
+      }
+
+    }
+  }
+
+}
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+.support {
+
+  .sticky{
+    position:fixed;
+    top:0;
+  }
+  a:hover{
+    opacity:0.8;
+  }
+  .help-top {
+    width: 1180px;
+    height: 180px;
+    border: solid 0px red;
+    background: url('/images/help.png') 50% 50% no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+    border-radius: 0px;
+
+  }
+  .cox-left {
+    //position: relative;
+    max-width: 295px;
+    z-index: 999;
+    padding: 20px;
+    overflow: hidden;
+
+    .nav-support {
+      list-style: none;
+      width: 100%;
+      border: solid 0px red;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      background-color: #f3f4f7;
+
+      > li > a {
+        display: block;
+        height: 45px;
+        line-height: 25px;
+        color: #888;
+        font-size: 14px;
+        text-decoration: none;
+        background-color: #fff;
+        border-bottom: solid 1px #f3f4f7;
+        letter-spacing: 1px;
+      }
+      > .active > a {
+        background-color: #f3f4f7;
+        color: #262626;
+      }
+    }
+  }
+
+  .cox-right {
+    float: right;
+    padding: 20px;
+
+    .panel {
+      //margin-bottom: 0;
+      box-shadow:inherit;
+
+      .panel-heading {
+        background-color: #fff;
+        border-bottom: solid 1px #f3f4f7;
+        .panel-heading-title {
+          color: #888;
+        }
+      }
+
+      .panel-body {
+        padding-left: 40px;
+        padding-top: 20px;
+
+        >p {
+          font-size: 16px;
+          font-weight:bold;
+          color: #262626;
+          margin: 0 0 5px;
+        }
+        > div {
+          color:#888;
+          margin-bottom: 20px;
+        }
+
+        .set-img {
+          width: 750px;
+          height: 230px;
+          background: url('../images/setAddress_cn.png') 0 0 no-repeat;
+          background-size: 750px auto;
+        }
+        [html='en'].set-img{
+          background: url('../images/setAddress_en.png') 0 0 no-repeat;
+        }
+      }
+    }
+
+  }
+
+}

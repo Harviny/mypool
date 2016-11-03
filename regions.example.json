@@ -1,0 +1,16 @@
+{
+  "text": {
+    "zh-cn": "\u4e2d\u56fd",
+    "en": "China"
+  },
+  "default_url": "https:\/\/cn.pool.btc.com",
+  "api_endpoint": "https:\/\/cn.pool.btc.com\/public",
+  "stratum_url": {
+    "host": "bj.pool.btc.com",
+    "ports": [
+      3333,
+      443,
+      25
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+@import "../bootstrap/variables.less";
+@import "../bootstrap/mixins.less";
+
+//mixins
+.icon-retina(@width, @height, @url) {
+  width: @width;
+  height: @height;
+  background-size: @width @height;
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+//
+.monospace() {
+  font-family: @font-family-monospace;
+}
+
+[v-cloak] {
+  display: none!important;
+}
+
+@nav-height: 60px;
+@main-body-padding-top: 20px;

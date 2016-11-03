@@ -1,0 +1,209 @@
+@import "../bootstrap/variables.less";
+@import "../bootstrap/mixins.less";
+@import "../include/common.less";
+
+.nav-item-active() {
+  a {
+    background-color: #508ad3;
+  }
+}
+
+.header {
+  background-color: #3c78c2;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="zh-cn"] .logo-link {
+  width: 133px;
+  height: 37px;
+  background: url('/images/logo-pool-cn@2x.png?__inline') 0 0 no-repeat;
+  background-position: left center;
+  background-size: 126px auto;
+}
+
+html[lang="en"] .logo-link {
+  width: 139px;
+  height: 37px;
+  background: url('/images/logo-pool@2x.png?__inline') 0 0 no-repeat;
+  background-position: left center;
+  background-size: 126px auto;
+}
+
+html[lang="ru"] .logo-link {
+  width: 139px;
+  height: 37px;
+  background: url('/images/logo-pool@2x.png?__inline') 0 0 no-repeat;
+  background-position: left center;
+  background-size: 159px 37px;
+}
+
+.logo {
+  line-height: @nav-height;
+  float: left;
+}
+
+.logo-link {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav {
+  float: left;
+  margin-left: 80px;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .nav-item {
+    float: left;
+    position: relative;
+    line-height: @nav-height;
+
+    .icon-new-flag {
+      position: absolute;
+      z-index: 10;
+      right: -10px;
+      top: 5px;
+    }
+
+    a {
+      font-size: 16px;
+      line-height: 1;
+      padding: 10px 20px;
+      border-radius: 3px;
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &.active {
+      .nav-item-active();
+    }
+  }
+}
+
+html[lang="ru"] .nav .nav-item a {
+  font-size: 16px;
+  line-height: 1;
+  padding: 10px 10px;
+  border-radius: 3px;
+  color: #fff;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.region {
+  float: right;
+  height: 60px;
+  line-height: 60px;
+
+  .caret {
+    border-top: 6px dashed;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+  }
+
+  .dropdown-menu{
+    padding:0;
+    padding-bottom: 10px;
+  }
+  .region-active {
+    display: inline-block;
+    line-height: 30px;
+    position: relative;
+
+    > a {
+      display: block;
+      line-height: 16px;
+      font-size: 14px;
+      color: #fff;
+      padding: 5px 10px;
+      background-color: #508ad3;
+      border-radius: 5px;
+      text-decoration: none;
+      height: 26px;
+    }
+
+    .region-dropdown {
+      left: auto;
+      right: 0;
+      min-width: inherit;
+    }
+    .region-dropdown > li > a {
+      padding: 3px 20px;
+      text-align: center;
+    }
+  }
+
+}
+
+.workerName {
+  margin-right: 10px;
+
+  .region-active > a {
+    background-color: inherit;
+  }
+
+}
+
+.preference {
+  float: right;
+  margin-left: 20px;
+
+  a {
+    line-height: 60px;
+    color: #fff;
+  }
+
+  // 格式化默认的 bootstrap 弹出样式
+  .popover-content {
+    padding: 20px 14px;
+  }
+
+}
+
+
+.preference-popover-list {
+  list-style: none;
+  font-size: 12px;
+  padding-left: 0;
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.preference-popover-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.preference-popover-item-option {
+  margin-bottom: 0;
+
+  input {
+    position: absolute;
+  }
+
+  span {
+    margin-left: 20px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #888;
+    font-weight: 400
+  }
+}
+
+.preference-popover-item-desc {
+  margin-left: 20px;
+  margin-bottom: 0;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 16px;
+}

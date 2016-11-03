@@ -1,0 +1,13 @@
+.idea/
+.env
+npm-debug.log
+debugbar/
+docs/
+src/config/
+src/app/
+src/database/
+src/public/
+src/tests/
+src/storage/
+src/vendor/
+

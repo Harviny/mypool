@@ -1,0 +1,327 @@
+@import "include/common.less";
+
+html {
+  font-size: 14px;
+}
+
+body {
+  min-width: 1180px;
+  margin-bottom:-10px;
+  background-color: #e6e9ee;
+}
+
+a {
+  cursor: pointer;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.main-body {
+  background-color: #e6e9ee;
+  padding-top: @main-body-padding-top;
+  min-width: 1180px;
+  padding-bottom: 20px;
+  min-height: 400px;
+}
+
+.container {
+  width: 1180px !important;
+}
+
+.breadcrumb.bm {
+  font-size: 14px;
+  line-height: 17px;
+  color: #262626;
+  background: none;
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.breadcrumb.bm a {
+  color: #3c78c2;
+}
+
+.panel-bm.panel {
+  border: none;
+}
+
+.instruction{
+  display: block;
+  background: url('/images/instruction@2x.png?__inline') 50% 50% no-repeat;
+  background-size: 18px auto;
+  width:18px;
+  height: 30px;
+  cursor: pointer;
+}
+.instruction:hover{
+  background: url('/images/instruction_hover@2x.png?__inline')50% 50% no-repeat;
+  background-size: 18px auto;
+}
+.panel{
+  border-radius: 4px;
+  overflow: hidden;
+}
+.panel-bm .panel-heading {
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+  border-bottom: none;
+  line-height: 21px;
+  padding: 10px 20px;
+}
+
+.panel-bm .panel-heading-title {
+  color: #000000;
+  font-size: 16px;
+}
+
+.panel-bm .panel-heading-corner {
+  float: right;
+  font-size: 12px;
+  color: #262626;
+}
+
+.panel-bm .panel-heading-corner .icon-arrow-right {
+  margin-left: 5px;
+}
+
+.panel-bm .panel-body {
+  padding: 20px;
+}
+
+.cox-left {
+  padding-left: 0px;
+  padding-right: 10px;
+}
+
+.cox-right {
+  padding-left: 10px;
+  padding-right: 0px;
+}
+
+.page-nav {
+  text-align: center;
+}
+
+.page-nav a {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: top;
+  min-width: 28px;
+  background-color: #79b;
+  color: #fff;
+}
+
+.btn-primary {
+  background: rgba(85, 156, 213, .85);;
+  border-radius: 8px;
+  width: 197px;
+  height: 44px;
+  border: 0;
+  font-size: 20px;
+}
+
+.btn-primary-small {
+  background: #3c78c2;
+  border-radius: 4px;
+  padding: 0 15px;
+  line-height: 31px;
+  border: 0;
+  font-size: 14px;
+  color: #fff;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.pool-panel-interval {
+  margin-bottom: 10px;
+  height: 30px;
+  & > ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    & > li {
+      float: left;
+      cursor:pointer;
+      margin-right: 10px;
+
+      & > a {
+        text-decoration: none;
+        color: #888;
+        font-size: 14px;
+        line-height: 24px;
+        padding: 3px 8px;
+        display: block;
+        border-radius: 3px;
+      }
+    }
+
+    & > .active > a {
+      background: #508ad3;
+      color: #fff;
+    }
+  }
+}
+
+.panel-body {
+  & > dl {
+    margin-bottom: 0;
+    overflow: hidden;
+    width: 100%;
+
+    & > dt {
+      line-height: 30px;
+      float: left;
+      color: #888;
+      font-weight: 300;
+    }
+    & > dd {
+      line-height: 30px;
+      float: right;
+      margin-left: 8px;
+    }
+  }
+}
+
+.pool-table {
+  margin-bottom: 0px;
+  & > thead > tr > th {
+    font-size: 14px;
+    color: #888888;
+    border-bottom: 1px solid #e6e9ee;
+    font-weight: inherit;
+    text-align: left;
+  }
+  & > tbody > tr > td {
+    vertical-align: middle;
+    border-top: 0px;
+    text-align: left;
+  }
+}
+
+.input-auth {
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 3px;
+  //background-color: rgb(243,244,247);
+  border: 1px solid #ddd;
+  padding-left: 10px;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color:#888;
+  &:focus {
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+  }
+
+}
+
+.modal{
+  margin-top: 200px;
+  z-index:1100;
+
+  .modal-dialog{
+    max-width: 280px;
+
+    .modal-content{
+      border-radius: 4px;
+
+      .modal-header{
+        border-radius: 4px 4px 0 0;
+        padding:10px 10px 10px 15px;
+        font-size: 16px;
+        color:#000;
+        background-color: #f3f4f7;
+      }
+      .modal-body{
+        padding:18px 15px 15px 15px;
+      }
+      .modal-footer{
+        padding:10px 15px 15px 10px;
+        border: 0;
+      }
+    }
+  }
+}
+
+.messageTip{
+  .modal-dialog{
+    width:250px;
+    max-width: 280px;
+
+    .modal-content{
+      border-radius: 4px;
+
+      .modal-header{
+        padding:10px;
+        font-size: 16px;
+        color:#000;
+        text-align: left;
+      }
+      .modal-body{
+        min-height: 60px;
+        border-radius: 3px 3px 0 0;
+        background-color: #fff;
+        text-align: center;
+        padding: 20px 15px 5px 15px;
+      }
+      .modal-footer{
+        padding:5px 13px 10px 10px;
+        border-top:0;
+        >a{
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+@import 'module/header.less';
+@import 'module/footer.less';
+@import 'module/index.less';
+@import 'module/region-board.less';
+@import 'module/miners.less';
+@import 'module/dashboard.less';
+@import 'module/miner.less';
+@import 'module/earning.less';
+@import 'module/poolStats.less';
+@import 'module/settings.less';
+@import 'module/help.less';
+@import 'module/first-setting.less';
+@import 'module/donwnload.less';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
