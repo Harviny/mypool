@@ -29,25 +29,27 @@ function timestamp(value, unit, type) {
 
 }
 
-function getCharts(url,text) {
+function getCharts(url, text) {
     if (timer != undefined) {
         clearTimeout(timer);
     }
     var unit = $('#pool-stats>.active').attr('unit');
-    if(unit==undefined || unit==''){
-        unit='h';
+    if (unit == undefined || unit == '') {
+        unit = 'h';
     }
     var query = {};
     if (unit == 'h') {
         query = {
             dimension: '1h',
             start_ts: Math.floor((Date.now() - 24 * 3 * 3600 * 1000) / 1000),
+            real_point: 1,
             count: 24 * 3
         }
     } else {
         query = {
             dimension: '1d',
             start_ts: Math.floor((Date.now() - 24 * 30 * 3600 * 1000) / 1000),
+            real_point: 1,
             count: 30
         }
     }
@@ -57,33 +59,24 @@ function getCharts(url,text) {
             chart.hideLoading();
 
             chart.setOption({
-                //title: {
-                //    text: title,
-                //    left: 'center'
-                //},
-                //legend: {
-                //    data:text=='index' ? [dic.hashrate,dic.reject] : [],
-                //    x: 940,
-                //    y: 'top',
-                //},
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: {
                         animation: false
                     },
-                    formatter: function(params) {
+                    formatter: function (params) {
                         //console.log(params)
-                        if(params[0] && params[1]){
-                            return  `${dic.time}: ${timestamp( params[0].name, unit,'all')} <br/>
-                                     ${params[0].seriesName}: ${params[0].value.toFixed(1)} ${data.shares_unit}H/s <br/>
+                        if (params[0] && params[1]) {
+                            return `${dic.time}: ${timestamp(params[0].name, unit, 'all')} <br/>
+                                     ${params[0].seriesName}: ${params[0].value.toFixed(3)} ${data.shares_unit}H/s <br/>
                                      ${params[1].seriesName}: ${params[1].value.toFixed(3)}%`
                         }
-                        else{
-                            if(params[0].seriesIndex==0){
-                                return  `${dic.time}: ${timestamp( params[0].name, unit,'all')} <br/>
-                                     ${params[0].seriesName}: ${params[0].value.toFixed(1)} ${data.shares_unit}H/s`
-                            }else{
-                                return  `${dic.time}: ${timestamp( params[0].name, unit,'all')} <br/>
+                        else {
+                            if (params[0].seriesIndex == 0) {
+                                return `${dic.time}: ${timestamp(params[0].name, unit, 'all')} <br/>
+                                     ${params[0].seriesName}: ${params[0].value.toFixed(3)} ${data.shares_unit}H/s`
+                            } else {
+                                return `${dic.time}: ${timestamp(params[0].name, unit, 'all')} <br/>
                                      ${params[0].seriesName}: ${params[0].value.toFixed(3)}%`
                             }
 
@@ -104,15 +97,15 @@ function getCharts(url,text) {
                     },
                     boundaryGap: false,
                     offset: 10,
-                    axisLabel : {
-                        formatter: function(v){
-                            return  timestamp(v, unit)
+                    axisLabel: {
+                        formatter: function (v) {
+                            return timestamp(v, unit)
                         }
                     }
                 },
                 yAxis: [
                     {
-                        name:dic.hashrate+'('+data.shares_unit + 'H/s)',
+                        name: dic.hashrate + '(' + data.shares_unit + 'H/s)',
                         boundaryGap: false,
                         splitLine: {
                             show: false
@@ -122,17 +115,17 @@ function getCharts(url,text) {
                         }
                     },
                     {
-                        name :dic.reject+'(%)',
+                        name: dic.reject + '(%)',
                         boundaryGap: false,
                         //splitNumber:3,
-                        min:0,
-                        max:10,
+                        min: 0,
+                        max:getRejectPrecent(data),
                         splitLine: {
                             show: false
                         },
                         axisLabel: {
-                            formatter: function(v){
-                                return  v
+                            formatter: function (v) {
+                                return v
                             }
                         }
                     }
@@ -141,7 +134,7 @@ function getCharts(url,text) {
                     {
                         name: dic.hashrate,
                         type: 'line',
-                        yAxisIndex:0,
+                        yAxisIndex: 0,
                         data: data.tickers.map(t => +t[1]),
                         //itemStyle: {normal: {areaStyle: {type: 'default'}}},
                         smooth: true,
@@ -149,7 +142,7 @@ function getCharts(url,text) {
                     {
                         name: dic.reject,
                         type: 'line',
-                        yAxisIndex:1,
+                        yAxisIndex: 1,
                         //itemStyle: {normal: {areaStyle: {type: 'default'}}},
                         data: data.tickers.map(t => t[2] * 100),
                         smooth: true,
@@ -158,7 +151,7 @@ function getCharts(url,text) {
             });
         })
         .always(() => {
-            timer= setTimeout(() => {
+            timer = setTimeout(() => {
                 getCharts(url, text);
             }, 2000);
         });
@@ -166,5 +159,14 @@ function getCharts(url,text) {
 
 module.exports = getCharts
 
-
+function getRejectPrecent(data) {
+    let rejectPrecent = 10;
+    for (let i = 0; i < data.tickers.length; i++) {
+        if (parseFloat(data.tickers[i][2]*100) > 10) {
+            rejectPrecent = 100;
+            break;
+        }
+    }
+    return rejectPrecent;
+}
 

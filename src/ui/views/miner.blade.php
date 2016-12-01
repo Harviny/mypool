@@ -37,25 +37,25 @@
                     <hr style="margin-top: 28px; margin-bottom: 25px;">
 
                     <div class="row db-body">
-                        <div class="col-xs-4">
-                            <div class="k">1{{ trans('global.miner.M') }}</div>
-                            <div class="v"  v-cloak>
-                                <span v-animate-num="list.shares_1m" fixed="2"></span>
-                                <span class="unit">@{{ list.shares_unit | addHs }}</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="k">5{{ trans('global.miner.M') }}</div>
-                            <div class="v"  v-cloak>
-                                <span v-animate-num="list.shares_5m" fixed="2"></span>
-                                <span class="unit">@{{ list.shares_unit | addHs }}</span>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <div class="k">15{{ trans('global.miner.M') }}</div>
+                        <div class="col-xs-6">
+                            <div class="k">{{ trans('global.miner.RealTime') }}</div>
                             <div class="v"  v-cloak>
                                 <span v-animate-num="list.shares_15m" fixed="2"></span>
                                 <span class="unit">@{{ list.shares_unit | addHs }}</span>
+                            </div>
+                        </div>
+                        {{--<div class="col-xs-4">--}}
+                            {{--<div class="k">1{{ trans('global.miner.trans.hours') }}</div>--}}
+                            {{--<div class="v"  v-cloak>--}}
+                                {{--<span v-animate-num="list.shares_1h" fixed="2"></span>--}}
+                                {{--<span class="unit">@{{ list.shares_1h_unit | addHs }}</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        <div class="col-xs-6">
+                            <div class="k">24{{ trans('global.miner.H') }}</div>
+                            <div class="v"  v-cloak>
+                                <span v-animate-num="list.shares_1d" fixed="2"></span>
+                                <span class="unit">@{{ list.shares_1d_unit | addHs }}</span>
                             </div>
                         </div>
                     </div>

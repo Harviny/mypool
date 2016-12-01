@@ -4,6 +4,10 @@
     position:fixed;
     top:0;
   }
+  .sticky-bottom{
+    top:inherit;
+    bottom:450px;
+  }
   a:hover{
     opacity:0.8;
   }
@@ -17,6 +21,14 @@
     border-radius: 0px;
 
   }
+  .diff-png{
+    height:390px;
+    border:solid 0px red;
+    width:760px;
+    background: url('/images/diff_en.jpg') 50% 20% no-repeat;
+    background-size: 760px auto;
+  }
+
   .cox-left {
     //position: relative;
     max-width: 295px;
@@ -47,6 +59,7 @@
       > .active > a {
         background-color: #f3f4f7;
         color: #262626;
+        font-weight: bold;
       }
     }
   }
@@ -81,19 +94,22 @@
           color:#888;
           margin-bottom: 20px;
         }
+        .b{
+          color:#333;
+          font-weight: bold;
+        }
 
-        .set-img {
-          width: 750px;
-          height: 230px;
-          background: url('../images/setAddress_cn.png') 0 0 no-repeat;
-          background-size: 750px auto;
-        }
-        [html='en'].set-img{
-          background: url('../images/setAddress_en.png') 0 0 no-repeat;
-        }
       }
     }
 
   }
 
 }
+html[lang="zh-cn"] {
+  .support{
+    .diff-png{
+      background: url('/images/diff_cn.jpg') 50% 20% no-repeat;
+    }
+  }
+}
+

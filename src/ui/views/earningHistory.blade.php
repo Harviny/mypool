@@ -69,7 +69,7 @@
 
             <div class="row">
                 <div class="panel panel-bm" style="margin-bottom: 20px;overflow: visible">
-                    <div class="panel-body" v-cloak>
+                    <div class="panel-body">
 
                         <div class="subsidy">
                             <div class="col-md-6" style="padding:0">
@@ -85,18 +85,18 @@
                             </div>
                             <div class="col-md-6" style="padding:0">
                                 <span class="text-left" style="padding-left:30px;">{{trans('global.rebates.AccumulatedProfit')}}</span>
-                                <span class="text-right"> @{{ subsidy.status.amount  | formatBlock }}
+                                <span class="text-right" v-cloak> @{{ subsidy.status.amount  | formatBlock }}
                                     <span class="text-muted">BTC</span>
                                 </span>
                             </div>
                         </div>
 
-                        <div class="progress">
+                        <div class="progress" v-cloak>
                             <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" v-bind:style="{width:subsidy.status.rebates_progress }"></div>
                             <div class="progress-bit"> @{{ subsidy.status.amount | formatBlock }}&nbsp;BTC</div>
                         </div>
 
-                        <table class="table pool-table">
+                        <table class="table pool-table"  v-if="subsidy.history.length>0" v-cloak>
                             <thead>
                             <tr>
                                 <th class="text-left">{{trans('global.rebates.time')}}</th>
@@ -129,8 +129,9 @@
                                 <th>{{trans('global.earn.Time')}}</th>
                                 <th style="text-align: right">{{trans('global.earn.NetworkDifficulty')}}</th>
                                 <th style="text-align: right">{{trans('global.earn.Earnings')}}</th>
-                                <th style="text-align: right">{{trans('global.earn.Payment')}}</th>
+                                <th></th>
                                 <th style="text-align: center">{{trans('global.earn.Mode')}}</th>
+                                <th style="text-align: right">{{trans('global.earn.Payment')}}</th>
                                 <th style="text-align: center">{{trans('global.earn.Address')}}</th>
                                 <th style="text-align: right">{{trans('global.earn.PaidAmount')}}</th>
                             </tr>
@@ -138,17 +139,32 @@
                             <tbody v-for="item in list.list" track-by="$index" style="border:0;"  v-cloak>
                                 <tr>
                                     <td>@{{item.date | formatTime}}</td>
-                                    <td style="text-align: right">@{{item.diff}}</td>
-                                    <td style="text-align: right">@{{item.earnings | formatBlock }}</td>
+                                    <td style="text-align: right">
+                                        <span v-if="item.diff_rate"
+                                              :style="item.diff_rate>0 ? 'color:red;' : 'color:green'">
+                                            @{{ item.diff_rate>0 ? '+' : '' }}@{{item.diff_rate | fixed 2 }}%</span>&nbsp;
+                                        <span>@{{item.diff}}</span>
+                                    </td>
+                                    <td style="text-align: right">
+                                        <span>@{{item.earnings | formatBlock }}</span>
+                                    </td>
+                                    <td>
+                                        <div v-if="item.earnings_rate" :style="item.earnings_rate>0 ? 'color:red;' : 'color:green'">
+                                          @{{ item.earnings_rate>0 ? '+' : ''}}@{{item.earnings_rate | fixed 2}}%
+                                        </div>
+                                        <div v-else>
+                                            -
+                                        </div>
+                                    </td>
+                                    <td style="text-align: center">@{{item.payment_mode}}</td>
                                     <td style="text-align: right">
                                         <span v-if="item.payment_time == 0">-</span>
-                                        <a v-if="item.payment_time != 0" href="https://btc.com/@{{item.address}}" target="_blank">
+                                        <a v-if="item.payment_time != 0" href="https://btc.com/@{{item.payment_tx}}" target="_blank">
                                             @{{ item.payment_time }}
                                         </a>
                                     </td>
-                                    <td style="text-align: center">@{{item.payment_mode}}</td>
                                     <td style="text-align: center">
-                                        <a href="https://btc.com/@{{item.address}}" target="_blank" class="eqfont">
+                                        <a href="https://btc.com/@{{item.payment_tx}}" target="_blank" class="eqfont">
                                             @{{item.address}}
                                         </a>
                                     </td>

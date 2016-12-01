@@ -11,7 +11,7 @@
                     <div class="settings-board">
                         <div class="settings-list">
                             <div class="settings-item link">
-                                <a href="http://i.btc.com" class="h-a">{{trans('global.common.users.user-center')}}</a>
+                                <a href="http://i.btc.com" class="h-a" target="_blank">{{trans('global.common.users.user-center')}}</a>
                             </div>
                             <div class="settings-item" data-toggle="modal" data-target="#setAddress">
                                 <div class="h">
@@ -25,11 +25,12 @@
                                 <div class="loading" disabled></div>
                             </div>
 
-                            <div class="settings-item" data-toggle="modal" data-target="#setNMCAddress">
+                            <div class="settings-item">
                                 <div class="h">
-                                    {{trans('global.common.users.NamecoinAddress')}}
+                                    <span>{{trans('global.common.users.NamecoinAddress')}}</span>&nbsp;
+                                    <a href="{{route('help')}}#FAQ" target="_blank">{{trans('global.common.setAddress.help')}}</a>
                                 </div>
-                                <div class="b">
+                                <div class="b"  data-toggle="modal" data-target="#setNMCAddress">
                                     <div class="b-inner"  v-cloak>
                                         <div class="address" v-if="userInfo.nmc_address" >  @{{ userInfo.nmc_address  | loading}}</div>
                                         <div class="alert alert-warning" v-else >
@@ -43,18 +44,19 @@
                                 <div class="loading" disabled></div>
                             </div>
 
-                            <div class="settings-item" data-toggle="modal" data-target="#setSubsidyAddress" v-on:click="clear()">
+                            <div class="settings-item"  v-on:click="clear()">
                                 <div class="h">
-                                    {{trans('global.common.users.subsidy-address')}}
+                                    <span>{{trans('global.common.users.subsidy-address')}}</span>&nbsp;
+                                    <a href="{{route('help')}}#FAQ" target="_blank">{{trans('global.common.setAddress.help')}}</a>
                                 </div>
-                                <div class="b">
+                                <div class="b" data-toggle="modal" data-target="#setSubsidyAddress">
                                     <div class="b-inner" v-cloak>
                                         <div class="address" v-if="userInfo.rebates_address"> @{{ userInfo.rebates_address  | loading}}</div>
                                         <div class="alert alert-warning" v-else>
                                             <a href="#" class="close" data-dismiss="alert">
                                                 &times;
                                             </a>
-                                            <strong>* </strong> {{trans('global.common.users.setSubsidyAddress')}}。
+                                            <strong>* </strong> {{trans('global.common.users.setSubsidyAddress')}}
                                         </div>
                                     </div>
                                 </div>
@@ -146,16 +148,16 @@
                             </section>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn-primary-small" v-if="flow==1" v-on:click="flow2">
+                            <button type="button" class="btn btn-primary-small" v-if="flow==1" v-on:click="flow2">
                                 {{ trans('global.common.setAddress.Modify') }}
                             </button>
-                            <button type="button" class="btn-primary-small" v-if="flow==2" v-on:click="flow3">
+                            <button type="button" class="btn btn-primary-small" v-if="flow==2" v-on:click="flow3">
                                 {{ trans('global.common.setAddress.continue') }}
                             </button>
-                            <button type="button" class="btn-primary-small" v-if="flow==3" v-on:click="flow4">
+                            <button type="button" class="btn btn-primary-small" v-bind:disabled="loadAdr" v-if="flow==3" v-on:click="flow4">
                                 {{ trans('global.common.setAddress.continue') }}
                             </button>
-                            <button type="button" class="btn-primary-small" v-if="flow==4" v-on:click="flow5">
+                            <button type="button" class="btn btn-primary-small" v-bind:disabled="loadAdr" v-if="flow==4" v-on:click="flow5">
                                 {{ trans('global.common.setAddress.done') }}
                             </button>
                         </div>
@@ -213,7 +215,7 @@
                             </section>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn-primary-small" v-on:click="updateNMCAddress">
+                            <button type="button" class="btn btn-primary-small" v-bind:disabled="loadNMC" v-on:click="updateNMCAddress">
                                 {{ trans('global.common.setAddress.Modify') }}
                             </button>
                         </div>
@@ -240,7 +242,7 @@
                             </section>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn-primary-small" v-on:click="updateSubsidyAddress()">
+                            <button type="button" class="btn btn-primary-small"  v-bind:disabled="loadSub" v-on:click="updateSubsidyAddress()">
                                 {{ trans('global.common.setAddress.Modify') }}
                             </button>
                         </div>

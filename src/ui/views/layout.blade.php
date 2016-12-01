@@ -24,6 +24,7 @@
 
 @include('include.footer')
 
+<script src="https://s.btc.com/common/js/selfxss/0.0.1/selfxss.min.js"></script>
 <script src="mod.js"></script>
 {!! app('fis')->useFramework() !!}
 

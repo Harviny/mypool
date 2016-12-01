@@ -64,7 +64,7 @@
                             @endforeach
                         @endif
                             <li class="create">
-                                <a href="{{route('sub-account.create')}}">{{ trans('global.common.users.create-worker') }}</a>
+                                <a href="{{route('sub-account.create')}}" target="_blank">{{ trans('global.common.users.create-worker') }}</a>
                             </li>
                     </ul>
                 </div>

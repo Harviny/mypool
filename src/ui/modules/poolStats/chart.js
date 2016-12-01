@@ -57,11 +57,13 @@ function getCharts(url, text) {
     if (unit == 'h') {
         query = {
             dimension: '1h',
+            real_point: 1,
             count: 24 * 3
         }
     } else {
         query = {
             dimension: '1d',
+            real_point: 1,
             count: 15
         }
     }

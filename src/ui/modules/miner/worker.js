@@ -13,7 +13,6 @@ $(function () {
 
 });
 
-
 Vue.config.delimiters = ['${', '}'];
 new Vue({
     el: '.miners',
@@ -29,7 +28,18 @@ new Vue({
         },
         currentGroup: {},
         groups: {},
-        worker: {}
+        worker: {
+            data: []
+        },
+    },
+    computed: {
+        selectedCount: function () {
+            let count = this.worker.data.reduce(function (sum, cur) {
+                return cur.checked ? sum + 1 : sum;
+            }, 0)
+
+            return count > 0 ? true : false;
+        }
     },
     filters: {
         name(v){
@@ -61,7 +71,7 @@ new Vue({
     methods: {
         updateStats: function () {
             let self = this;
-            ajax.getJSON(`${window.__btccom.endpoint.rest}/worker/groups`,{page_size:25})
+            ajax.getJSON(`${window.__btccom.endpoint.rest}/worker/groups`, {page_size: 25})
                 .then(data => {
                     self.groups = data;
                     self.updateWorker();
@@ -86,7 +96,7 @@ new Vue({
 
             //修改浏览器URL地址
             let hisUrl = window.location.href.split('?')[0];
-            if(history.pushState){
+            if (history.pushState) {
                 window.history.replaceState({}, '0', hisUrl + '?id=' + self.fields.group);
             }
 
@@ -97,13 +107,11 @@ new Vue({
                     self.currentGroup = symbol;
                 }
             })
-            $('#stAll').prop('checked',false)
+            $('#stAll').prop('checked', false);
             ajax.getJSON(`${window.__btccom.endpoint.rest}/worker`, self.fields)
                 .then(data=> {
-
-                    // 绑定checkbox 并且所有的矿机初始状态为未选中
                     data.data.forEach(symbol=> {
-                        symbol.checked = false;  //
+                        symbol.checked = false; // 绑定checkbox 并且所有的矿机初始状态为未选中
                     })
 
                     //data.data.forEach(ov=> {
@@ -185,7 +193,7 @@ new Vue({
                         self.updateStats();
                     } else {
                         $('.v-error').show();
-                        for(let key in data.err_msg){
+                        for (let key in data.err_msg) {
                             $('.v-error').text(data.err_msg[key]);
                             return;
                         }
@@ -194,9 +202,8 @@ new Vue({
                 })
         },
         //矿机操作
-        operateWorker: function (gid) {
+        operateWorker: function (gid,name) {
             let self = this, workerIds = '';
-
             self.worker.data.forEach(symbol=> {
                 if (symbol.checked) {
                     workerIds += symbol.worker_id + ',';
@@ -215,12 +222,17 @@ new Vue({
                     if (data.status == true) {
                         if (gid == 0) {
                             prompt('remove');
+                        }else{
+                            prompt('move',name);
                         }
                         self.updateWorker();
                         self.updateStats();
                     } else {
                         if (gid == 0) {
                             prompt('remove_not');
+                        }
+                        else{
+                            prompt('move_not');
                         }
                     }
                 })
@@ -252,9 +264,9 @@ new Vue({
             }
             lastChecked = e.target;
         },
-        clear:function(){
+        clear: function () {
             $('.v-error').text('');
-            document.getElementById('addGroupName').value='';
+            document.getElementById('addGroupName').value = '';
 
         }
     },
@@ -268,8 +280,13 @@ new Vue({
 
 
 // 弹出小窗
-function prompt(temp) {
-    $(".messageInfo").text(dic[temp]);
+function prompt(temp,name) {
+    if(temp=='move'){
+        $(".messageInfo").text(`${dic[temp]} [${name}]`);
+    }
+    else{
+        $(".messageInfo").text(dic[temp]);
+    }
     $('#messageTip').modal({keyboard: true});
 }
 
@@ -283,7 +300,7 @@ function getQueryString(name) {
 
 
 function timestamp(value) {
-    if (value == '' || value == undefined || value==0) {
+    if (value == '' || value == undefined || value == 0) {
         return '-';
     } else {
         let date = new Date(value * 1000),
@@ -295,3 +312,10 @@ function timestamp(value) {
         return Y + M + D + h + m;
     }
 }
+
+Array.prototype.remove = function (val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};

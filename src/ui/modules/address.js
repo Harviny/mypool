@@ -26,7 +26,10 @@ new Vue({
         nmc_new_address: '',
         nmc_error_num: 0,
         subsidy_new_address:'',
-        subsidy_error_num:0
+        subsidy_error_num:0,
+        loadAdr:false,
+        loadNMC:false,
+        loadSub:false
 
     },
     filters: {
@@ -89,10 +92,12 @@ new Vue({
                 } else {
                     self.contact = 'mail';
                 }
-
             }
+
+            self.loadAdr=true;
             getJSON(`${window.__btccom.endpoint.rest}/account/verify-code/${self.contact}`)
                 .then(data => {
+                    self.loadAdr=false;
                     if (data.success == true) {
                         self.verify = data;
                     } else {
@@ -102,7 +107,6 @@ new Vue({
                     }
 
                 });
-
         },
         flow5: function () { //验证码验证
             var self = this, query;
@@ -117,8 +121,11 @@ new Vue({
                 verify_mode: self.contact,
                 verify_id: self.verify.uuid
             }
+
+            self.loadAdr=true;
             post(`${window.__btccom.endpoint.rest}/account/address/update`, query)
                 .then(data => {
+                    self.loadAdr=false;
                     if (data.status) {
                         if (data.status == true) {
                             self.verify = data;
@@ -140,8 +147,10 @@ new Vue({
 
         updateNMCAddress: function () {
             var self = this;
+            self.loadNMC=true;
             post(`${window.__btccom.endpoint.rest}/account/nmc/address/update`, {new_address:self.nmc_new_address.trim()})
                 .then(data => {
+                    self.loadNMC=false;
                     if (data.status) {
                         if (data.status == true) {
                             $('#successUpdate').modal('show');
@@ -160,8 +169,10 @@ new Vue({
         },
         updateSubsidyAddress: function () {
             var self = this;
+            self.loadSub=true;
             post(`${window.__btccom.endpoint.rest}/account/rebates/address/update`, {new_address:self.subsidy_new_address.trim()})
                 .then(data => {
+                    self.loadSub=false;
                     if (data.status) {
                         if (data.status == true) {
                             $('#successUpdate').modal('show');

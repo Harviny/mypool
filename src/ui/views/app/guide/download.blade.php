@@ -36,16 +36,6 @@
     <div class="pool-logo"></div>
     <a class="btn-download">{{ trans('global.download.app-download') }}</a>
     <div class="version">{{ trans('global.download.version') }}</div>
-    {{--<div class="guide">--}}
-        {{--<div class="guide-title">{{ trans('global.download.ios-setting') }}</div>--}}
-        {{--<ul class="guide-ul">--}}
-            {{--<li></li>--}}
-            {{--<li>{{ trans('global.download.genenal') }}</li>--}}
-            {{--<li>{{ trans('global.download.device-management') }}</li>--}}
-            {{--<li class="en-li">{{ trans('global.download.trust') }}</li>--}}
-        {{--</ul>--}}
-    {{--</div>--}}
-
 </section>
 </body>
 <script>
@@ -57,16 +47,7 @@
     } else {
         lang = 'en';
     }
-//    if(userAgent()=='Android'){
-//        var guide=document.querySelector(".guide");
-//        var title=document.querySelector(".title");
-//        var logo=document.querySelector(".pool-logo");
-//
-//        guide.style.display='none';
-//        title.style.marginTop='50px';
-//        logo.style.marginTop='70px';
-//        btn.style.marginTop='80px';
-//    }
+
     btn.ontouchstart = function () {
         this.className = "btn-download active";
     }

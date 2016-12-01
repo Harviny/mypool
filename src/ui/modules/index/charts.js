@@ -42,11 +42,13 @@ function getCharts(url, text) {
     if (unit == 'h') {
         query = {
             dimension: '1h',
+            real_point: 1,
             count: 24 * 3
         }
     } else {
         query = {
             dimension: '1d',
+            real_point: 1,
             count: 15
         }
     }
@@ -72,7 +74,6 @@ function getCharts(url, text) {
                     formatter: function (params) {
                         return `${dic.time}: ${timestamp(params[0].name, unit, 'all')} <br/>
                                 ${params[0].seriesName}: ${params[0].value.toFixed(3)} ${data.unit}H/s <br/>`
-
                     }
                 },
                 grid: {

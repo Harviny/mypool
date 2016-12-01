@@ -2,170 +2,224 @@
 @import url('../bootstrap/mixins.less');
 
 .footer {
+  //font-family:"微软雅黑","MicrosoftYaHei",Roboto;
+  margin-top: 20px;
   -webkit-font-smoothing: antialiased;
   min-width: 1180px;
-  background: #052748;
-  line-height: 50px;
-  min-height: 50px;
+  background: #000;
+  height: 385px;
+  padding: 40px 0;
 
-
-  .foot-left {
-    a:hover {
-      opacity: 0.8;
-    }
-    border: solid 0px red;
-    padding-left: 0;
-    & > ul {
-      margin: 0;
-      height: 50px;
-      padding: 0;
-
-      & > li:first-child {
-        padding-left: 0px;
-      }
-      & > li {
-        list-style: none;
-        display: block;
-        float: left;
-        padding-left: 20px;
-        height:50px;
-        min-width: 10px;
-
-        & > a {
-          font-size: 16px;
-          display: block;
-          height:50px;
-          border: solid 0px red;
-          min-width: 10px;
-          color: #fff;
-          font-weight: 400;
-        }
-      }
-
-        .facebook {
-          width: 10px;
-          background: url('/images/icon-facebook@2x.png?__inline') 50% 50% no-repeat;
-          background-size: auto 20px;
-        }
-        .sina {
-          width: 20px;
-          background: url('/images/icon-sina@2x.png?__inline') 50% 50% no-repeat;
-          background-size: 20px auto;
-        }
-        .twitter {
-          width: 20px;
-          background: url('/images/icon-twitter@2x.png?__inline') 50% 50% no-repeat;
-          background-size: 20px auto;
-        }
-        .github {
-          width: 20px;
-          background: url('/images/icon-github@2x.png?__inline') 50% 50% no-repeat;
-          background-size: 20px auto;
-        }
-
-    }
-
+  section:first-child {
+    width: 26%;
+  }
+  section:nth-child(2) {
+    width: 18%;
+  }
+  section:nth-child(3) {
+    width: 21%;
+  }
+  section:nth-child(4) {
+    width: 23%;
+  }
+  section:nth-child(5) {
+    width: 12%;
   }
 
-  .foot-right {
-    padding-right: 0;
-    border: solid 0px red;
-    & > ul {
-      margin: 0;
-      height: 50px;
-      padding: 0;
-      float: right;
-      margin-right: 20px;
-
-      & > li {
-        list-style: none;
-        display: inline-block;
-        //padding-right: 20px;
-
-        & > a {
-          font-size: 16px;
-          height: 50px;
-          display: block;
-          border: solid 0px red;
-          color: #fff;
-        }
-        .pool-app{
-          background: url('/images/code-app.png?__inline') 12% 50% no-repeat;
-          background-size: 30px auto;
-          padding-left: 55px;
-          padding-right: 20px;
-          background-color: #666666;
-          text-decoration: none;
-
-        }
-      }
-
-    }
-    .app-code{
-      display: none;
-      position: absolute;
-      width:100%;
-      right:0;
-      height:155px;
-      top:-155px;
-      background-color: #666666;
-      border:solid 0px red;
-      padding: 8px 7px 0 7px;
-
-      .devices{
-        height: 30px;
-        line-height: 30px;
-        color:#fff;
-        text-align: center;
-      }
-    }
-  }
-}
-
-.lang {
-  padding-left: 21px;
-  float: right;
-  background-image: url('/images/Shape@2x.png?__inline');
-  background-position: left center;
-  background-size: 16px auto;
-  background-repeat: no-repeat;
-  color: #fff;
-
-  .caret {
-    border-top: 6px dashed;
-    border-right: 6px solid transparent;
-    border-left: 6px solid transparent;
-  }
-  .lang-active > a {
+  section {
+    float: left;
     display: block;
-    line-height: 16px;
-    font-size: 14px;
-    color: #fff;
-    padding: 5px 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    height: 26px;
-  }
-  .lang-active.open > .dropdown-menu {
-    left: auto;
-    right: 0;
-    border: 0;
-    margin-bottom: 10px;
-    min-width: initial;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    background-clip: inherit;
-    border-radius: 3px;
-  }
-  .lang-active {
-    display: inline-block;
-    line-height: 30px;
-    position: relative;
-  }
-  .lang-active .dropdown-menu > li > a {
-    padding: 3px 22px;
-    text-align: right;
+    padding: 0;
+    text-align: left;
+    font-weight: bold;
+    border: solid 0px red;
 
+    & > p {
+      font-weight: bold;
+      height: 25px;
+      line-height: 25px;
+      font-size: 18px;
+      color: #FFFFFF;
+      letter-spacing: 0.2px;
+    }
+
+    & > span {
+      font-weight: bold;
+      display: block;
+      font-size: 14px;
+      color: #ccc;
+      letter-spacing: 0.2px;
+      margin-top: 18px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .block-chain {
+      margin-top: 10px;
+      display: block;
+      font-size: 14px;
+      color: #AAAAAA;
+      letter-spacing: 0.2px;
+    }
+
+    .weixin {
+      position: absolute;
+      display: none;
+      top:-290px;
+      left:-30px;
+      width: 200px;
+      height: 280px;
+      background: url('/images/Wechat_en@2x.png') center center no-repeat;
+      background-size: 200px 280px;
+    }
+
+    & > ul {
+      padding: 0;
+      list-style: none;
+      & > li {
+        margin-top: 5px;
+        & > a,span {
+          text-align: center;
+          font-size: 12px;
+          color: #AAAAAA;
+          -webkit-font-smoothing: subpixel-antialiased;
+          font-weight: 300;
+          letter-spacing: 0.2px;
+        }
+      }
+
+    }
+  }
+
+  .icon-panel {
+    height: 33px;
+    margin-top: 18px;
+    & > a:first-child {
+      margin-left: 0;
+      background: url("/images/icon_footer_01@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+    & > a:nth-child(2) {
+      background: url("/images/icon_footer_02@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+    & > a:nth-child(3) {
+      background: url("/images/icon_footer_03@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+    & > a:nth-child(4) {
+      background: url("/images/icon_footer_04@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+
+    & > a {
+      display: block;
+      width: 33px;
+      height: 33px;
+      border: solid 1px #000;
+      border-radius: 100%;
+      float: left;
+      margin-left: 12px;
+    }
+  }
+  .icon-panel2 {
+    & > a:first-child {
+      margin-left: 0;
+      background: url("/images/icon_footer_06@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+    & > a:nth-child(2) {
+      background: url("/images/icon_footer_07@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+    & > a:nth-child(3) {
+      background: url("/images/icon_footer_05@2x.png?__inline") center center no-repeat;
+      background-size: 32px auto;
+    }
+  }
+
+  .lang {
+    font-size: 14px;
+    line-height: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: solid 1px #fff;
+    border-radius: 4px;
+    float: left;
+    margin-left: 14px;
+    //background-image: url('/images/Shape@2x.png?__inline');
+    //background-position: left center;
+    //background-size: 16px auto;
+    //background-repeat: no-repeat;
+    color: #fff;
+
+    .caret {
+      border-top: 6px dashed;
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+    }
+    .lang-active > a {
+      display: block;
+      line-height: 16px;
+      font-size: 14px;
+      color: #fff;
+      padding: 5px 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      height: 26px;
+    }
+    .lang-active.open > .dropdown-menu {
+      left: auto;
+      right: -7px;
+      border: 0;
+      margin-bottom: 10px;
+      min-width: initial;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+      background-clip: inherit;
+      border-radius: 3px;
+    }
+    .lang-active {
+      display: inline-block;
+      line-height: 30px;
+      position: relative;
+    }
+    .lang-active .dropdown-menu > li > a {
+      padding: 3px 22px;
+      text-align: right;
+
+    }
+  }
+
+  .btc-app-code {
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    width: 136px;
+    margin-top: 130px;
+
+    .btc-pool-title {
+      color: #fff;
+      display: block;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+    }
+    .btc-pool-app {
+      margin-top: 10px;
+      width: 100%;
+      height: 136px;
+      background: url("/images/img_footer_App@2x.png") center center no-repeat;
+      background-size: 135px auto;
+
+    }
   }
 }
-
-
+html[lang="zh-cn"] {
+  .footer {
+    section {
+      .weixin {
+        background: url('/images/Wechat_cn@2x.png') center center no-repeat;
+        background-size: 200px 280px;
+      }
+    }
+  }
+}

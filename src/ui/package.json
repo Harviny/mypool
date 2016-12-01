@@ -8,6 +8,7 @@
     "clean": "rm -rf npm_debug.log ../resources/views/* ../public/assets"
   },
   "devDependencies": {
+    "big.js": "^3.1.3",
     "fis-parser-less": "^0.1.3",
     "fis3": "^3.4.13",
     "fis3-hook-commonjs": "git+https://github.com/btccom/fis3-hook-commonjs.git#4d4aa774673a567d94b6faa9d84450955537920c",

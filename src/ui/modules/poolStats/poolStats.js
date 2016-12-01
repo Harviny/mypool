@@ -38,7 +38,6 @@ new Vue({
     methods: {
         updateStats: function () {
             var self = this;
-            //const url = `https://cn-pool.api.btc.com/public/v1/pool/stats/merge`;
             const url = `${window.__btccom.endpoint.realtime}/pool/stats/merge`;
             getJSON(url)
                 .then(data => {
@@ -48,7 +47,6 @@ new Vue({
         },
         updateBlocks: function () {
             var self = this;
-            //const url = `https://cn-pool.api.btc.com/public/v1/pool/blocks/merge?page=1&page_size=20`;
             const url = `${window.__btccom.endpoint.realtime}/pool/blocks/merge`;
             getJSON(url, self.fields)
                 .then(data => {

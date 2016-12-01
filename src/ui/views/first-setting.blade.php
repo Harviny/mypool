@@ -84,8 +84,8 @@
                                     </div>
                                 </div>
 
-                                <input type="submit" class="btn-primary-small"
-                                       value="{{trans('global.first-set.save')}}">
+                                <input type="submit" class="btn btn-primary-small"
+                                       value="{{trans('global.first-set.save')}}"  v-bind:disabled="loading">
                             </form>
                         </div>
                     </div>
@@ -105,9 +105,10 @@
     function submitCreate() {
         var self = this;
         if (self.check == '') {
-            self.error.nodeError = 'true'
+            self.error.nodeError = 'true';
             return;
         }
+        self.loading=true;
         ajax.post(`${window.__btccom.endpoint.rest}/account/sub-account/create`,
                 {
                     'region_node': self.check,
@@ -115,6 +116,7 @@
                     'bitcoin_address': self.bitcoin_address,
                 })
                 .then(function (data) {
+                    self.loading=false;
                     if (data.err_no) {
                         if (data.err_msg.worker_name) {
                             self.error.nameError = data.err_msg.worker_name[0];
@@ -149,6 +151,7 @@
             check: '',
             worker_name: '',
             bitcoin_address: '',
+            loading:false,
             error: {
                 nodeError: '',
                 nameError: '',
